@@ -13,17 +13,21 @@ resource "aws_security_group" "jenkins-securitygroup" {
       from_port = 22
       to_port = 22
       protocol = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      cidr_blocks = ["184.185.72.92/32"]
   } 
   ingress {
       from_port = 8080
       to_port = 8080
       protocol = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      cidr_blocks = ["184.185.72.92/32"]
   } 
-tags {
-    Name = "jenkins-securitygroup"
-  }
+tags = {
+        Name = "Jenkins-terraform-test"
+        Owner = "chen.xu"
+        ExpirationDate = "2019-07-05"
+        Environmnet = "development"
+        Project = "training"
+    }
 }
 resource "aws_security_group" "app-securitygroup" {
   vpc_id = "${aws_vpc.main.id}"
@@ -40,15 +44,19 @@ resource "aws_security_group" "app-securitygroup" {
       from_port = 22
       to_port = 22
       protocol = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      cidr_blocks = ["184.185.72.92/32"]
   } 
   ingress {
       from_port = 80
       to_port = 80
       protocol = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      cidr_blocks = ["184.185.72.92/32"]
   } 
-tags {
-    Name = "app-securitygroup"
-  }
+tags = {
+        Name = "Jenkins-terraform-test"
+        Owner = "chen.xu"
+        ExpirationDate = "2019-07-05"
+        Environmnet = "development"
+        Project = "training"
+    }
 }
